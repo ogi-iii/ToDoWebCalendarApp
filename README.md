@@ -5,5 +5,6 @@ ToDo Web Calendar App by FastAPI & starlette
 
 ```
 cd app/
+python create_table.py
 python run.py
 ```
