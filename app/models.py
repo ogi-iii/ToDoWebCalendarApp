@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from db import Base
 
@@ -71,13 +71,13 @@ class Task(Base):
     date = Column(
         'date',
         DateTime,
-        default=datetime.now(),
+        default=datetime.now() + timedelta(hours=9),
         nullable=False,
         server_default=current_timestamp(),
     )
     done = Column('done', BOOLEAN, default=False, nullable=False)
 
-    def __init__(self, user_id: int, content: str, deadline: datetime, date: datetime = datetime.now()):
+    def __init__(self, user_id: int, content: str, deadline: datetime, date: datetime = datetime.now() + timedelta(hours=9)):
         self.user_id = user_id
         self.content = content
         self.deadline = deadline

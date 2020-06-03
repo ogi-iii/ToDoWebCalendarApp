@@ -6,7 +6,7 @@ class MyCalendar(calendar.LocaleHTMLCalendar):
     def __init__(self, username, linked_date: dict):
         calendar.LocaleHTMLCalendar.__init__(self,
                                             firstweekday=6, 
-                                            locale='ja_JP.UTF-8') # local_PC: ja_JP.UTF-8, docker: C.UTF-8
+                                            locale='C.UTF-8') # local_PC: ja_JP.UTF-8, docker: C.UTF-8
         # 何か予定がある日付はリンクする
         self.username = username
         self.linked_date = linked_date  # dict{'datetime': done}
