@@ -1,10 +1,9 @@
 # ToDoWebCalendarApp
 ToDo Web Calendar App by FastAPI & starlette
 
-## Simple Setup
+## Setup by Docker
 
 ```
-cd app/
-python create_table.py
-python run.py
+$ docker image build -t myimage .
+$ docker container run --rm --name mycontainer -p 8000:8000 myimage
 ```
