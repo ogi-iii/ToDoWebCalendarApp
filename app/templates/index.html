@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+<br>
+<div class="row">
+    <div class="col-md-10">
+        <h1>Welcome to ToDo Web Calendar App</h1>
+    </div>
+    <div class="col-md-2" style="margin-top: 10px;">
+        <a href="/register" class="btn btn-outline-primary">Sign in</a>
+        <a href="/admin" class="btn btn-primary">Login</a>
+    </div>
+</div>
+
+<hr>
+<p>1. Please <a href="/admin">Login</a> or <a href="/register">Sign in</a>.</p>
+<p>2. Add your todos.</p>
+<p>3. You can manage your schedule on Your Calendar!</p>
+<br>
+<p>※ If you want to get more information, please check <a href="/redoc" target="_blank">API documents</a>.</p>
+{% endblock %}
