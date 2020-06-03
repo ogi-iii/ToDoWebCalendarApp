@@ -42,7 +42,7 @@ def admin(request: Request, credentials: HTTPBasicCredentials = Depends(security
     username = auth(credentials)
 
     # """ [new] 今日の日付と来週の日付"""
-    today = datetime.now()
+    today = datetime.now() + timedelta(hours=9) # 標準時から日本時間に変換
     next_w = today + timedelta(days=7)  # １週間後の日付
 
     # データベースからユーザ名が一致するデータを取得
