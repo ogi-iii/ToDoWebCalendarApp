@@ -1,5 +1,5 @@
 # create_table.py
-from app.models import *
+from models import *
 import db
 import os
 
