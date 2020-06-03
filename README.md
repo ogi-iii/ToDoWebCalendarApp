@@ -1,5 +1,5 @@
 # ToDoWebCalendarApp
-ToDo Web Calendar App by FastAPI
+ToDo Web Calendar App by FastAPI & starlette
 
 ## Simple Setup
 
