@@ -9,7 +9,7 @@ RUN python create_table.py
 
 EXPOSE 8080
 
-CMD ["uvicorn", "urls:app", "--port", "8080"]
+CMD ["uvicorn", "urls:app", "--host", "0.0.0.0", "--port", "8080"]
 # CMD ["uvicorn", "urls:app", "--host", "0.0.0.0", "--port", "8080"]
 
 # on your terminal, please run below commands for docker

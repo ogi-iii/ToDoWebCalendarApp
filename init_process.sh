@@ -1,5 +1,4 @@
 #! /bin/bash
-
 echo "[1/6] create swarm nodes as docker in docker"
 docker-compose up -d
 docker container exec -it manager docker swarm init | sed 1,4d | sed '2,$d' >> tmp.txt
@@ -21,7 +20,6 @@ docker container exec -it manager docker node ls
 echo "[2/6] build & run visualizer"
 cp yml/visualizer.yml stack/
 docker container exec -it manager docker stack deploy -c /stack/visualizer.yml visualizer
-echo "\nvisualizer running on http://localhost:9000/\n"
 
 echo "[3/6] api image push to registry"
 cd main/
@@ -43,4 +41,6 @@ docker container exec -it manager docker stack deploy -c stack/app.yml todo_app
 echo "[6/6] deploy ingress"
 cp yml/todo/ingress.yml stack/
 docker container exec -it manager docker stack deploy -c stack/ingress.yml todo_ingress
-echo "\nApp running on http://localhost:8000/\n"
+
+echo -e "\n Visualizer running on http://localhost:9000/"
+echo -e "\n App running on http://localhost:8000/\n"

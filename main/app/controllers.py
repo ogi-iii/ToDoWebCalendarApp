@@ -227,7 +227,7 @@ def get(request: Request, credentials: HTTPBasicCredentials = Depends(security))
     db.session.close()
 
     # JSONフォーマット
-    task = [{
+    task_json = [{
         'id': t.id,
         'content': t.content,
         'deadline': t.deadline.strftime('%Y-%m-%d %H:%M:%S'),
@@ -235,7 +235,38 @@ def get(request: Request, credentials: HTTPBasicCredentials = Depends(security))
         'done': t.done,
     } for t in task]
 
-    return task
+    return task_json # curl -u username:password http://127.0.0.1:8000/get
+
+def get_weekly(request: Request, credentials: HTTPBasicCredentials = Depends(security)):
+    # 認証
+    username = auth(credentials)
+
+    # ユーザ情報を取得
+    user = db.session.query(User).filter(User.username == username).first()
+
+    # タスクを取得
+    task = db.session.query(Task).filter(Task.user_id == user.id).all()
+
+    db.session.close()
+
+        # """ [new] 今日の日付と来週の日付"""
+    today = datetime.now() + timedelta(hours=9) # 標準時から日本時間に変換
+    next_w = today + timedelta(days=7)  # １週間後の日付
+
+    # 直近のタスクだけでいいので、リストを書き換える
+    task_weekly = [t for t in task if today <= t.deadline <= next_w]
+
+
+    # JSONフォーマット
+    task_weekly_json = [{
+        'id': t.id,
+        'content': t.content,
+        'deadline': t.deadline.strftime('%Y-%m-%d %H:%M:%S'),
+        'published': t.date.strftime('%Y-%m-%d %H:%M:%S'),
+        'done': t.done,
+    } for t in task_weekly]
+
+    return task_weekly_json # curl -u username:password http://127.0.0.1:8000/get_weekly
 
 async def insert(request: Request,
                 content: str = Form(...), deadline: str = Form(...),
