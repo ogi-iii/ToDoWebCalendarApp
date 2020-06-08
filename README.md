@@ -1,10 +1,9 @@
 # ToDoWebCalendarApp
 ToDo Web Calendar App by FastAPI & starlette
 
-## Setup by Docker
+## App Setup by Docker Swarm as docker in docker
 
 ```
-$ cd main/
-$ docker image build -t myimage .
-$ docker container run --rm --name mycontainer -p 8000:8000 myimage
+$ chmod +x init_process.sh
+$ ./init_process.sh
 ```
