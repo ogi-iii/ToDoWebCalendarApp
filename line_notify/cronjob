@@ -1,0 +1,1 @@
+0 9 * * * root bash /usr/local/bin/line_notify.sh

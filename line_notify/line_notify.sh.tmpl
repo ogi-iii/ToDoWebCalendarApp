@@ -1,0 +1,9 @@
+#! /bin/bash
+curl -u {{var "USERNAME" }}:{{var "PASSWORD" }} {{var "APP_URL"}}:80/get_weekly >> weekly_tasks.json
+
+json_path="./weekly_tasks.json"
+token={{ var "TOKEN" }}
+
+python line_notify.py $json_path $token
+
+rm weekly_tasks.json

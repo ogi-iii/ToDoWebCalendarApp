@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  job:
+    image: registry:5000/cronjob/line_notify:latest
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == manager]
+    environment:
+      USERNAME: YOUR USER NAME # user name in todo app
+      PASSWORD: YOUR USER PASSWORD # user password in todo app
+      APP_URL: http://todo_app_nginx
+      TOKEN: YOUR LINE NOTIFY TOKEN # check https://notify-bot.line.me/ja/
+    networks:
+      - todoapp
+
+networks:
+  todoapp:
+    external: true
+
