@@ -11,4 +11,5 @@ app.add_api_route('/delete/{t_id}', delete)
 
 # JSONで返すAPI
 app.add_api_route('/get', get)
+app.add_api_route('/get_weekly', get_weekly)
 app.add_api_route('/add_task', insert, methods=['POST'])
