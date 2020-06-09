@@ -9,4 +9,10 @@ echo "[2/2] deploy cron"
 cd ..
 cp yml/cron.yml stack/
 docker container exec -it manager docker stack deploy -c stack/cron.yml todo_cron
-docker container exec -it manager chmod +x /usr/local/bin/line_notify.sh
+
+# getting internal container name
+docker container exec -it manager docker container ls -a --filter "name=todo_cron_job" -q >> tmp.txt
+cron_container=$(cat tmp.txt)
+rm tmp.txt
+
+docker container exec -it manager docker container exec -it $cron_container chmod +x /usr/local/bin/line_notify.sh

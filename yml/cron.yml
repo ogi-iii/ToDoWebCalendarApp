@@ -11,7 +11,7 @@ services:
       USERNAME: YOUR USER NAME # user name in todo app
       PASSWORD: YOUR USER PASSWORD # user password in todo app
       APP_URL: http://todo_app_nginx
-      TOKEN: YOUR LINE NOTIFY TOKEN # check https://notify-bot.line.me/ja/
+      TOKEN: YOUR LINE NOTIFY TOKEN # token from https://notify-bot.line.me/ja/
     networks:
       - todoapp
 
